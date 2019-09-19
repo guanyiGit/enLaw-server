@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholy.mapper.TEnLawDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soholy.entity.TEnLawData">
+        <id column="seq" property="seq"/>
+        <result column="type" property="type"/>
+        <result column="codec" property="codec"/>
+        <result column="binary_data" property="binaryData"/>
+        <result column="codec_data" property="codecData"/>
+        <result column="save_time" property="saveTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        seq, `type`, codec, binary_data, codec_data, save_time
+    </sql>
+
+    <select id="datas" resultType="com.soholy.entity.TEnLawData">
+        select  <include refid="Base_Column_List"></include> from t_en_law_data
+        <where>
+            <if test="deviceId != null and deviceId != ''">
+                and codec_data LIKE concat("%'deviceId':'" ,"%",#{deviceId},"%")
+            </if>
+            <if test="dataTypeEm != null and dataTypeEm != ''">
+                and codec_data LIKE concat("%'dataType':'" ,"%",#{dataTypeEm},"%")
+            </if>
+            <if test="type != null and type != ''">
+                and `type` = #{type}
+            </if>
+        </where>
+        order by save_time desc
+        <if test="page != null">
+            limit #{page.offset},#{page.limit}
+        </if>
+    </select>
+</mapper>

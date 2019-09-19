@@ -1,0 +1,162 @@
+package com.soholy.model.req;
+
+import com.soholy.service.server.ServerConstant;
+import com.soholy.utils.ByteUtils;
+
+/**
+ * 请求
+ */
+public class BaseRequest {
+
+    /**
+     * [0-1]
+     * 起始位 U16 2byte 	数据包的起始标志，固定为 0xA0 0xA2
+     */
+    private Integer mark = ByteUtils.byte2Toint(ServerConstant.PACKET_MARK, 0);
+
+
+    /**
+     * [2-3]
+     * 版本号	U16	2byte
+     * 终端设备的软件版本号。第一个u8表示主版本，第二个u8表示次版本号。例如1.0；
+     * 就是第一个u8为1，第二个u8为0.
+     */
+    private Float version;
+
+    /**
+     * [4]
+     * 数据类型ID	U8 	1byte 	数据类型的编号。
+     * 1：表示epc码
+     * 2：表示温度
+     * 3：表示图片
+     * 4：表示心跳
+     * 5：其他
+     */
+    private ReqDataType dataType;
+
+    /**
+     * [5-8]
+     * 消息ID	U32	4byte
+     * 消息id，每个消息的id，便于识别数据的完整性，每个消息分配一个不同的序号。
+     * 消息的id范围是从1开始到最大。如果达到最大序号，则循环到1重新开始。
+     */
+    private Long mId;
+
+    /**
+     * [9-16]
+     * u8 	8byte
+     * 设备内部集成的 通讯模块的 IMEI 号（一般为 15 位十进制数），从左往右每 2 个十进制数字截取保存、末尾数字补 0 	如358511020024166的IMEI 表示为：0x23 0x55 0x0B
+     * 0x02 0x00 0x18 0x10 0x3C
+     */
+    private String deviceId;
+
+    /**
+     * [17-24]
+     * 上传时间	U8	8byte
+     * 数据产生的时间：
+     * 到秒，从左往右每 2 个十进制数字截取保存、末尾数字补 0
+     */
+    private Long upTime;
+
+    /**
+     * [25-28]
+     * 数据内容长度	u16 	4byte
+     * 数据包的长度，以字节数表示，不包含本字段，以及之前的字段。
+     */
+    private Long dataLength = 0l;
+
+    /**
+     * [29]
+     * 数据结束指示符	U8	1byte
+     * 0，没有后续数据
+     * 1，有后续数据
+     */
+    private Byte finish;
+
+    /**
+     * 数据体内容
+     */
+    private byte[] content;
+
+    private byte[] origin;
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+    }
+
+    public Float getVersion() {
+        return version;
+    }
+
+    public void setVersion(Float version) {
+        this.version = version;
+    }
+
+    public ReqDataType getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(ReqDataType dataType) {
+        this.dataType = dataType;
+    }
+
+    public Long getmId() {
+        return mId;
+    }
+
+    public void setmId(Long mId) {
+        this.mId = mId;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+    public Long getUpTime() {
+        return upTime;
+    }
+
+    public void setUpTime(Long upTime) {
+        this.upTime = upTime;
+    }
+
+    public Long getDataLength() {
+        return dataLength;
+    }
+
+    public void setDataLength(Long dataLength) {
+        this.dataLength = dataLength;
+    }
+
+    public Byte getFinish() {
+        return finish;
+    }
+
+    public void setFinish(Byte finish) {
+        this.finish = finish;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
+    public byte[] getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(byte[] origin) {
+        this.origin = origin;
+    }
+}

@@ -1,0 +1,114 @@
+package com.soholy.service.server;
+
+import com.soholy.model.req.BaseRequest;
+import com.soholy.service.codec.CodecService;
+import com.soholy.utils.ByteUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+import lombok.extern.java.Log;
+
+import java.util.Arrays;
+import java.util.List;
+
+
+@Log
+public class ServerMessageDecode extends ByteToMessageDecoder {
+
+    private final CodecService codecService;
+
+    public ServerMessageDecode(CodecService codecService) {
+        this.codecService = codecService;
+    }
+
+    private int findMarkIndex(ByteBuf buf) {
+        int markIndex = -1;
+        byte[] markBinary = new byte[ServerConstant.PACKET_MARK.length];
+        try {
+            buf.markReaderIndex();
+            while (buf.readableBytes() >= ServerConstant.PACKET_MARK.length) {
+                buf.readBytes(markBinary, 0, markBinary.length);
+                int flag = 0;
+                innerFor:
+                for (int i = 0; i < markBinary.length; i++) {
+                    if (markBinary[i] != ServerConstant.PACKET_MARK[i]) {
+                        break innerFor;
+                    }
+                    flag++;
+                }
+
+                if (flag == markBinary.length) {
+                    markIndex = buf.readerIndex() - ServerConstant.PACKET_MARK.length;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            buf.resetReaderIndex();
+        }
+        return markIndex;
+    }
+
+    private int findDataLen(ByteBuf buf) {
+        int dataLen = 0;
+        byte[] dataLenBinary = new byte[ServerConstant.PACKET_LEN_END_INDEX - ServerConstant.PACKET_LEN_START_INDEX];
+//        if (buf.readableBytes() < buf.readerIndex() + dataLenBinary.length) {
+//            return -1;
+//        }
+        if (buf.readableBytes() < ServerConstant.BASE_LENGTH) {
+            return -1;
+        }
+        buf.getBytes(buf.readerIndex() + ServerConstant.PACKET_LEN_START_INDEX, dataLenBinary, 0, dataLenBinary.length);
+        //取数值4b  太长略过
+        byte[] fullbyte = new byte[4];
+        ByteUtils.copyArrays(dataLenBinary, 0, dataLenBinary.length > fullbyte.length ? fullbyte.length : dataLenBinary.length, fullbyte, 0);
+        for (int i = 0; i < dataLenBinary.length; i++) {
+            dataLen += (dataLenBinary[i] & 0xFF) << ((dataLenBinary.length - 1 - i) * 8);
+        }
+        return dataLen;
+    }
+
+
+    @Override
+    protected void decode(ChannelHandlerContext ctx, ByteBuf buf, List<Object> out) throws Exception {
+        int len = buf.readableBytes();
+        if (len == 0) {
+            return;
+        }
+        try {
+            byte[] r = new byte[len];
+            buf.getBytes(0, r, 0, r.length);
+            log.info("The data received are:" + Arrays.toString(ByteUtils.byte2HexStr(r, null)));
+        } catch (Exception e) {
+        }
+
+        if (len < ServerConstant.BASE_LENGTH) {
+            return;
+        }
+        if (len > ServerConstant.MAX_LEN) {
+            log.warning("Received ultra-long Packet Lost , packet length:" + len);
+            buf.skipBytes(len);
+            return;
+        }
+
+
+        int markIndex = findMarkIndex(buf);
+        if (markIndex == -1) {
+            return;
+        }
+
+        buf.readerIndex(markIndex);
+
+        int dataLen = findDataLen(buf);
+        if (buf.readableBytes() < ServerConstant.BASE_LENGTH + dataLen || dataLen == -1) {
+            return;
+        }
+
+        byte[] req = new byte[ServerConstant.BASE_LENGTH + dataLen];
+        buf.readBytes(req, 0, req.length);
+        BaseRequest request = codecService.decode(req);
+        if (request != null)
+            out.add(request);
+    }
+}

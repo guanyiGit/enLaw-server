@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholy.mapper.TDeviceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soholy.entity.TDevice">
+        <id column="device_id" property="deviceId" />
+        <result column="device_number" property="deviceNumber" />
+        <result column="device_status" property="deviceStatus" />
+        <result column="start_time" property="startTime" />
+        <result column="device_brand" property="deviceBrand" />
+        <result column="device_model_id" property="deviceModelId" />
+        <result column="production_time" property="productionTime" />
+        <result column="device_remarks" property="deviceRemarks" />
+        <result column="device_type" property="deviceType" />
+        <result column="creation_time" property="creationTime" />
+        <result column="org_id" property="orgId" />
+        <result column="device_work_pattern" property="deviceWorkPattern" />
+        <result column="upload_interval_time" property="uploadIntervalTime" />
+        <result column="imei" property="imei" />
+        <result column="device_pwd" property="devicePwd" />
+        <result column="device_factory_id" property="deviceFactoryId" />
+        <result column="device_name" property="deviceName" />
+        <result column="verify_code" property="verifyCode" />
+        <result column="psk" property="psk" />
+        <result column="device_batch" property="deviceBatch" />
+        <result column="device_id_iot" property="deviceIdIot" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        device_id, device_number, device_status, start_time, device_brand, device_model_id, production_time, device_remarks, device_type, creation_time, org_id, device_work_pattern, upload_interval_time, imei, device_pwd, device_factory_id, device_name, verify_code, psk, device_batch, device_id_iot
+    </sql>
+
+</mapper>

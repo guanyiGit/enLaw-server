@@ -1,0 +1,124 @@
+package com.soholy.service.impl;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.soholy.common.ReqPage;
+import com.soholy.entity.TDevice;
+import com.soholy.entity.TEnLawData;
+import com.soholy.entity.TInstrumentRecord;
+import com.soholy.entity.TLawEnforcementInstrument;
+import com.soholy.mapper.TDeviceMapper;
+import com.soholy.mapper.TEnLawDataMapper;
+import com.soholy.mapper.TInstrumentRecordMapper;
+import com.soholy.mapper.TLawEnforcementInstrumentMapper;
+import com.soholy.model.req.BaseRequest;
+import com.soholy.model.req.ReqDataType;
+import com.soholy.service.EnLawService;
+import com.soholy.utils.ByteUtils;
+import lombok.extern.java.Log;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+
+@Service
+@Log
+public class EnLawServerImpl implements EnLawService {
+
+    @Autowired
+    private TEnLawDataMapper enLawDataMapper;
+
+    @Autowired
+    private TLawEnforcementInstrumentMapper tLawEnforcementInstrumentMapper;
+
+    @Autowired
+    private TInstrumentRecordMapper tInstrumentRecordMapper;
+
+    @Autowired
+    private TDeviceMapper tDeviceMapper;
+
+
+    @Override
+//    @Transactional
+    public boolean testHandle(List<BaseRequest> requests) {
+        if (requests != null && requests.size() > 0) {
+            byte[] b = new byte[2];
+            return requests.stream()
+                    .map(x -> {
+                        TEnLawData tEnLawData = new TEnLawData();
+                        tEnLawData.setType(0);
+                        tEnLawData.setCodec(0);
+                        byte[] origin = x.getOrigin();
+                        if (origin != null)
+                            tEnLawData.setBinaryData(Arrays.toString(ByteUtils.byte2HexStr(origin, null)));
+                        tEnLawData.setSaveTime(LocalDateTime.now());
+                        if (x.getDataType() != null) {
+                            tEnLawData.setCodec(1);
+                            JSONObject json = JSON.parseObject(JSON.toJSONString(x));
+                            json.put("content", Arrays.toString(ByteUtils.byte2HexStr(x.getContent(), null)));
+                            json.put("origin", tEnLawData.getBinaryData());
+                            ByteUtils.intTobyte2(x.getMark(), b, 0);
+                            json.put("mark", ByteUtils.byte2HexStr(b, null));
+                            tEnLawData.setCodecData(JSON.toJSONString(json, new SerializerFeature[]{SerializerFeature.UseSingleQuotes}));
+                        }
+                        return tEnLawData;
+                    }).allMatch(x -> 1 == enLawDataMapper.insert(x));
+        }
+        return false;
+    }
+
+    @Override
+    public List<TEnLawData> findTestData(ReqPage page, String deviceId, String dataTypeEm, Integer type) {
+        return enLawDataMapper.datas(page, deviceId, dataTypeEm, type);
+    }
+
+    @Override
+    public boolean bizHandle(List<BaseRequest> requests) {
+        if (requests != null && requests.size() > 0) {
+            Integer total = requests.stream()
+                    .filter(x -> ReqDataType.EPC.equality(x.getDataType(), ReqDataType.EPC))
+                    .filter(x -> x.getDataLength() != null && x.getDataLength() > 0)
+                    .map(x -> {
+                        List<TLawEnforcementInstrument> objs = tLawEnforcementInstrumentMapper.selectList(Wrappers.<TLawEnforcementInstrument>lambdaQuery().eq(TLawEnforcementInstrument::getInstrumentCode, x.getDeviceId()));
+                        if (objs != null && objs.size() == 1) {
+                            Long deviceId = null;
+                            try {
+                                String imei = new String(x.getContent(), Charsets.UTF_8);
+                                List<TDevice> tDevices = tDeviceMapper.selectList(Wrappers.<TDevice>lambdaQuery().eq(TDevice::getImei, imei));
+                                deviceId = null;
+                                if (tDevices != null && tDevices.size() == 1) {
+                                    deviceId = tDevices.get(0).getDeviceId();
+                                }
+                            } catch (Exception e) {
+                                log.warning("设备不存在 data:" + ReflectionToStringBuilder.toString(x, ToStringStyle.MULTI_LINE_STYLE) + "  e:" + e.getMessage());
+                                e.printStackTrace();
+                            }
+
+                            TLawEnforcementInstrument oldEntity = objs.get(0);
+
+                            TInstrumentRecord entity = new TInstrumentRecord();
+                            entity.setCreateTime(LocalDateTime.now());
+                            entity.setRecordDeviceid(deviceId != null ? deviceId.intValue() : null);
+                            entity.setRecordInstrumentid(oldEntity.getInstrumentId());
+                            entity.setRecordPlaceid(oldEntity.getInstrumentPlaceid());
+
+                            return tInstrumentRecordMapper.insert(entity);
+                        }
+                        log.warning("执法仪记录不存在 data:" + ReflectionToStringBuilder.toString(x, ToStringStyle.MULTI_LINE_STYLE));
+                        return 0;
+                    }).reduce(0, Integer::sum);
+            if (requests.size() != total) {
+                throw new RuntimeException();
+            }
+            return true;
+        }
+        return false;
+    }
+}

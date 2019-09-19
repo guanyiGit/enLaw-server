@@ -1,0 +1,204 @@
+package com.soholy.service.codec.impl;
+
+import com.soholy.model.req.*;
+import com.soholy.service.codec.CodecService;
+import com.soholy.utils.ByteUtils;
+import lombok.extern.java.Log;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+
+@Service
+@Log
+public class CodecServiceImpl implements CodecService {
+
+    private static final int HEADER_LEN = 30;
+
+    @Override
+    public BaseRequest decode(byte[] binary) {
+        log.info("[" + binary.length + "] decode input:" + Arrays.toString(ByteUtils.byte2HexStr(binary, null)));
+        BaseRequest request = new BaseRequest();
+        try {
+            request.setOrigin(binary);
+            if (decodeCheckd(binary)) {
+                ReqDataType dataType = ReqDataType.EPC.format(ByteUtils.copyArrays(binary, 4, 1)[0]);
+                switch (dataType) {
+                    case EPC:
+                        request = new EpcRequest();
+                        break;
+                    case TEMPERATURE:
+                        request = new TemperatureRequest();
+                        break;
+                    case IMG:
+                        request = new ImgRequest();
+                        break;
+                    case HEARTBEAT:
+                        request = new HeartbeatRequest();
+                        break;
+                    case OTHER:
+                        request = new OtherRequest();
+                        break;
+                    default:
+                        break;
+                }
+                request.setOrigin(binary);
+
+                int binaryIndex = 0;
+                binaryIndex = decodeHeaders(request, binary, binaryIndex);
+
+                decodeBody(request, binary, binaryIndex);
+
+                log.info("decode output:" + ReflectionToStringBuilder.toString(request, ToStringStyle.MULTI_LINE_STYLE));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return request;
+    }
+
+    @Override
+    public int decodeHeaders(BaseRequest headers, byte[] binary, int binaryIndex) {
+        int mark = ByteUtils.byte2Toint(binary, binaryIndex);
+        headers.setMark(mark);
+        binaryIndex += 2;
+
+        int versionPrefix = ByteUtils.byte1Toint(binary, binaryIndex++);
+        int versionSuffix = ByteUtils.byte1Toint(binary, binaryIndex++);
+        headers.setVersion(Float.valueOf(versionPrefix + "." + versionSuffix));
+
+        byte type = binary[binaryIndex++];
+        headers.setDataType(ReqDataType.EPC.format(type));
+
+        long mId = ByteUtils.byte4Tolong(binary, binaryIndex);
+        binaryIndex += 4;
+        headers.setmId(mId);
+
+        StringBuilder deviceIds = new StringBuilder();
+        for (int i = 0; i < 8; i++) {
+            String temp = ByteUtils.byteTohex(binary, binaryIndex, 1);
+            deviceIds.append(temp);
+            binaryIndex++;
+        }
+        headers.setDeviceId(deviceIds.toString());
+
+        long upTime = ByteUtils.byte8ToLong(binary, binaryIndex);
+        headers.setUpTime(upTime);
+        binaryIndex += 8;
+
+        long dataLength = ByteUtils.byte4Tolong(binary, binaryIndex);
+        headers.setDataLength(dataLength);
+        binaryIndex += 4;
+
+        byte finish = binary[binaryIndex++];
+        headers.setFinish(finish);
+
+        return binaryIndex;
+    }
+
+    @Override
+    public int decodeBody(BaseRequest request, byte[] binary, int binaryIndex) {
+        ReqDataType dataType = request.getDataType();
+        if (request.getDataLength() > 0l && dataType != null) {
+            int len = binary.length - binaryIndex;
+            byte[] content = ByteUtils.copyArrays(binary, binaryIndex, len);
+            request.setContent(content);
+            binaryIndex += len;
+            switch (dataType) {
+                case EPC:
+                    EpcRequest epcRequest = (EpcRequest) request;
+                    String escStrs = new String(content, Charsets.UTF_8);
+                    if (StringUtils.isNoneBlank(escStrs)) {
+                        epcRequest.setEpcs(StringUtils.split(escStrs, ","));
+                    }
+                    break;
+                case TEMPERATURE:
+                    TemperatureRequest temperatureRequest = (TemperatureRequest) request;
+                    temperatureRequest.setTemperatures(new Double[]{ByteUtils.byte8ToDouble(content, 0)});
+                    break;
+                case IMG:
+                    ImgRequest imgRequest = (ImgRequest) request;
+                    break;
+                case HEARTBEAT:
+                    HeartbeatRequest heartbeatRequest = (HeartbeatRequest) request;
+                    break;
+                case OTHER:
+                    OtherRequest otherRequest = (OtherRequest) request;
+                    break;
+            }
+        }
+        return binaryIndex;
+    }
+
+    @Override
+    public byte[] encode(BaseRequest request) {
+        log.info("encode input:" + ReflectionToStringBuilder.toString(request, ToStringStyle.MULTI_LINE_STYLE));
+        byte[] binary = new byte[0];
+        try {
+            binary = new byte[HEADER_LEN];
+            int binaryIndex = 0;
+            //起始位
+            ByteUtils.intTobyte2(request.getMark(), binary, binaryIndex);
+            binaryIndex += 2;
+
+            //版本号
+            Float version = request.getVersion();
+            String[] split = StringUtils.split(String.valueOf(version), ".");
+            ByteUtils.intTobyte1(Integer.valueOf(split[0]), binary, binaryIndex++);
+            ByteUtils.intTobyte1(Integer.valueOf(split[1]), binary, binaryIndex++);
+
+            //数据类型ID
+            binary[binaryIndex++] = request.getDataType().getCode();
+
+            //消息mid
+            ByteUtils.longTobyte4(request.getmId(), binary, binaryIndex);
+            binaryIndex += 4;
+
+            //设备ID
+            byte[] src = ByteUtils.hex2byteWithBlank(request.getDeviceId().length() == 15 ? request.getDeviceId() + "0" : request.getDeviceId());
+            ByteUtils.copyArrays(src, 0, src.length, binary, binaryIndex);
+            binaryIndex += src.length;
+
+            //上传时间
+            src = ByteUtils.longToByte8(request.getUpTime());
+            ByteUtils.copyArrays(src, 0, src.length, binary, binaryIndex);
+            binaryIndex += src.length;
+
+            //数据内容长度
+            ByteUtils.longTobyte4(request.getDataLength(), binary, binaryIndex);
+            binaryIndex += 4;
+
+            //数据结束指示符
+            binary[binaryIndex++] = request.getFinish();
+
+            //数据内容
+            src = request.getContent();
+            if (src != null && src.length > 0) {
+                int contextLen = request.getDataLength().intValue();
+
+                byte[] fullArr = new byte[binary.length + contextLen];
+                ByteUtils.copyArrays(binary, 0, binary.length, fullArr, 0);
+                ByteUtils.copyArrays(src, 0, contextLen, fullArr, binary.length);
+                binary = fullArr;
+                binaryIndex += contextLen;
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            log.warning(e.getMessage());
+        }
+        log.info("[" + binary.length + "] encode output:" + Arrays.toString(ByteUtils.byte2HexStr(binary, null)));
+        request.setOrigin(binary);
+        return binary;
+    }
+
+    @Override
+    public boolean decodeCheckd(byte[] binary) {
+        if (binary.length >= HEADER_LEN) {
+            return true;
+        }
+        return false;
+    }
+}

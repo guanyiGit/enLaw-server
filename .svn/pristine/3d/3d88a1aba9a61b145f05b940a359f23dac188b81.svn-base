@@ -1,0 +1,16 @@
+package com.soholy.service;
+
+import com.soholy.common.ReqPage;
+import com.soholy.entity.TEnLawData;
+import com.soholy.model.req.BaseRequest;
+
+import java.util.List;
+
+public interface EnLawService {
+
+    boolean testHandle(List<BaseRequest> requests);
+
+    List<TEnLawData> findTestData(ReqPage page, String deviceId, String dataTypeEm, Integer type);
+
+    boolean bizHandle(List<BaseRequest> requests);
+}

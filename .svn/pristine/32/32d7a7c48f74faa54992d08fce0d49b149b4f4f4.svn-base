@@ -1,0 +1,75 @@
+package com.soholy.service.client;
+
+import com.soholy.model.ImgFile;
+import com.soholy.model.req.BaseRequest;
+import com.soholy.model.req.ReqDataType;
+import com.soholy.utils.ByteUtils;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.io.File;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class NettyClientHandlerTest {
+
+    public static void main(String[] args) {
+        testUpLoadFile();
+    }
+
+    private static void testUpLoadFile() {
+        try {
+            ImgFile imgFile = new ImgFile(new File("F:/dsct.png"));
+
+            RandomAccessFile randomAccessFile = new RandomAccessFile(imgFile.getFile(), "rw");
+            randomAccessFile.seek(imgFile.getStartPos());
+            byte[] bs = new byte[1024 * 3];
+            int byteRead = 0;
+            if ((byteRead = randomAccessFile.read(bs)) != -1) {
+                imgFile.setEndPos(byteRead);
+                imgFile.setBlock(bs);
+                long mid = (long) (Math.random() * 9999);
+                List<BaseRequest> testDatas = getTestDatas(mid, bs, ReqDataType.IMG);
+                testDatas.stream().forEach(x -> {
+                    System.out.println(ReflectionToStringBuilder.toString(x, ToStringStyle.MULTI_LINE_STYLE));
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static List<BaseRequest> getTestDatas(long mId, byte[] input, ReqDataType dataType) {
+        String deviceId = "358511020024166";
+        int contentMaxLen = 70;
+        List<BaseRequest> lis = new ArrayList<>();
+        byte[] binary = new byte[0];
+        if (input != null && input.length > 0) {
+            if (input.length > contentMaxLen) {
+                for (int i = contentMaxLen; i < input.length; i *= 2) {
+                    List<BaseRequest> temp = getTestDatas(mId, ByteUtils.copyArrays(input, i - contentMaxLen, contentMaxLen), dataType);
+                    if (temp != null && temp.size() > 0) {
+                        lis.addAll(temp);
+                    }
+                }
+            } else {
+                binary = input;
+            }
+        }
+
+        BaseRequest request = new BaseRequest();
+        request.setVersion(1.0f);
+        request.setDataType(dataType);
+        request.setmId(mId);
+        request.setDeviceId(deviceId);
+        request.setUpTime(Calendar.getInstance().getTimeInMillis());
+        request.setDataLength(Long.valueOf(binary.length));
+        request.setFinish((byte) 0x00);
+        request.setContent(binary);
+
+        lis.add(request);
+        return lis;
+    }
+}

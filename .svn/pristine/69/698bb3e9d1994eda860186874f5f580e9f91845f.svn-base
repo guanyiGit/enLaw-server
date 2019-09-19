@@ -1,0 +1,23 @@
+package com.soholy.service.server;
+
+import com.soholy.model.req.BaseRequest;
+import com.soholy.service.codec.impl.CodecServiceImpl;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.ByteToMessageDecoder;
+
+import java.util.List;
+
+
+public class ServerMessageDecode extends ByteToMessageDecoder {
+
+    @Override
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        byte[] req = new byte[in.readableBytes()];
+        in.readBytes(req);
+        CodecServiceImpl service = new CodecServiceImpl();
+        BaseRequest request = service.decode(req);
+        if (request != null)
+            out.add(request);
+    }
+}
