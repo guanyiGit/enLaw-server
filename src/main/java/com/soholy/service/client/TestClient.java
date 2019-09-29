@@ -8,13 +8,13 @@ import org.apache.commons.codec.Charsets;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import sun.misc.Lock;
 
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.CountDownLatch;
 
 public class TestClient {
 
@@ -48,6 +48,21 @@ public class TestClient {
         System.out.println("send ok");
     }
 
+    @Test
+    public void currentTest() throws IOException, InterruptedException {
+        int downLatch = 10;
+        CountDownLatch lock = new CountDownLatch(downLatch);
+        for (int i = 0; i < downLatch; i++) {
+            new Thread(() -> {
+//                testUpLoadFile();
+                sendEpc();
+                lock.countDown();
+            }).start();
+        }
+        lock.await();
+        System.out.println(lock.getCount());
+    }
+
 
     @Test
     public void sendHeartbeatHandle() {
@@ -64,6 +79,7 @@ public class TestClient {
     @Test
     public void testUpLoadFile() {
         String fileName = "F:/qrcode.png";
+//        String fileName = "F:/dsct.png";
         byte[] total = new byte[0];
         RandomAccessFile randomAccessFile = null;
         List<BaseRequest> datas = new ArrayList<>();
@@ -72,7 +88,7 @@ public class TestClient {
 
             randomAccessFile = new RandomAccessFile(imgFile.getFile(), "rw");
             randomAccessFile.seek(imgFile.getStartPos());
-            byte[] bs = new byte[1024];//文件切片大小
+            byte[] bs = new byte[1024 * 8];//文件切片大小
             int byteRead = 0;
             long mid = (long) (Math.random() * 10000);
             long subPos = randomAccessFile.length();
@@ -181,6 +197,18 @@ public class TestClient {
 
         lis.add(request);
         return lis;
+    }
+
+    @Test
+    public void test3() {
+        Map<String, String> env = System.getenv();
+        env.forEach((x, y) -> {
+            System.err.println(x + "======" + y);
+        });
+        Properties properties = System.getProperties();
+        properties.forEach((x, y) -> {
+            System.out.println(x + "======" + y);
+        });
     }
 }
 

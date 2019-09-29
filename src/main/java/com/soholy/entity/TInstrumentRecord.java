@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author GuanY
- * @since 2019-09-06
+ * @since 2019-09-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,9 +29,9 @@ public class TInstrumentRecord extends Model<TInstrumentRecord> {
     private Integer recordId;
 
     /**
-     * 场所表外键
+     * 入口表外键
      */
-    private Integer recordPlaceid;
+    private Integer recordEntranceid;
 
     /**
      * 执法仪表外键

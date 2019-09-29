@@ -4,17 +4,17 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.soholy.entity.TEnLawData">
-        <id column="seq" property="seq"/>
-        <result column="type" property="type"/>
-        <result column="codec" property="codec"/>
-        <result column="binary_data" property="binaryData"/>
-        <result column="codec_data" property="codecData"/>
-        <result column="save_time" property="saveTime"/>
+        <id column="seq" property="seq" />
+        <result column="type" property="type" />
+        <result column="codec" property="codec" />
+        <result column="binary_data" property="binaryData" />
+        <result column="codec_data" property="codecData" />
+        <result column="save_time" property="saveTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        seq, `type`, codec, binary_data, codec_data, save_time
+        seq, type, codec, binary_data, codec_data, save_time
     </sql>
 
     <select id="datas" resultType="com.soholy.entity.TEnLawData">
@@ -35,4 +35,22 @@
             limit #{page.offset},#{page.limit}
         </if>
     </select>
+
+    <select id="findRecordDetailByDeivceIdAndInsId" resultType="com.soholy.model.RecordDetail">
+        SELECT
+            di.dog_id AS dogId, di.dog_name AS dogName, dow.dog_owner_id AS dogOwnerId,dow.dog_owner_phone AS ownerPhone,
+            dow.dog_owner_name AS dogOwnerName, p.place_Id AS placeId,p.place_name AS placeName
+        FROM (t_device_ref_dog drd,t_law_enforcement_instrument li)
+        INNER JOIN t_dog_info di ON di.dog_id = drd.dog_id
+        INNER JOIN t_dog_owner dow ON dow.dog_owner_id = di.dog_owner_id
+
+        INNER JOIN t_instrument_record ir ON ir.record_instrumentid = li.instrument_id
+        INNER JOIN t_entrance en ON en.entrance_id = ir.record_entranceid
+        INNER JOIN t_place p ON p.place_Id = en.entrance_placeId
+
+        WHERE drd.use_status = 0
+        AND drd.device_id = #{deviceId}
+        AND li.instrument_id = #{instrumentId}
+    </select>
+
 </mapper>

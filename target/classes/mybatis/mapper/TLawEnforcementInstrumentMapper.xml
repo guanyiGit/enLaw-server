@@ -5,18 +5,23 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.soholy.entity.TLawEnforcementInstrument">
         <id column="instrument_id" property="instrumentId" />
+        <result column="instrument_name" property="instrumentName" />
         <result column="instrument_code" property="instrumentCode" />
-        <result column="instrument_placeid" property="instrumentPlaceid" />
+        <result column="instrument_imei" property="instrumentImei" />
         <result column="instrument_the_vendor" property="instrumentTheVendor" />
         <result column="instrument_the_factory_batch" property="instrumentTheFactoryBatch" />
         <result column="instrument_status" property="instrumentStatus" />
+        <result column="instrument_type" property="instrumentType" />
+        <result column="instrument_factory_time" property="instrumentFactoryTime" />
+        <result column="instrument_brand" property="instrumentBrand" />
+        <result column="instrument_factoryId" property="instrumentFactoryid" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        instrument_id, instrument_code, instrument_placeid, instrument_the_vendor, instrument_the_factory_batch, instrument_status, create_time, update_time
+        instrument_id, instrument_name, instrument_code, instrument_imei, instrument_the_vendor, instrument_the_factory_batch, instrument_status, instrument_type, instrument_factory_time, instrument_brand, instrument_factoryId, create_time, update_time
     </sql>
 
 </mapper>

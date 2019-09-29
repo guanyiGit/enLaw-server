@@ -1,8 +1,8 @@
 package com.soholy.service.server;
 
+import com.soholy.common.ServerConstant;
 import com.soholy.service.codec.CodecService;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author GuanY
- * @since 2019-09-06
+ * @since 2019-09-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,6 +26,11 @@ public class TPlace extends Model<TPlace> {
 
     @TableId(value = "place_Id", type = IdType.AUTO)
     private Integer placeId;
+
+    /**
+     * 场所编号
+     */
+    private String placeCode;
 
     /**
      * 场所名称
@@ -40,7 +45,7 @@ public class TPlace extends Model<TPlace> {
     /**
      * 场所类型
      */
-    private String placeType;
+    private Integer placeType;
 
     /**
      * 场所管理人员姓名
@@ -51,6 +56,11 @@ public class TPlace extends Model<TPlace> {
      * 场所管理人员电话
      */
     private String placePhone;
+
+    /**
+     * 所属街道
+     */
+    private String placeStreet;
 
     /**
      * 场所详细地址

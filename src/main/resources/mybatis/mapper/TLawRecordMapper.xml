@@ -14,13 +14,12 @@
         <result column="r_data_len" property="rDataLen" />
         <result column="r_content" property="rContent" />
         <result column="r_binary" property="rBinary" />
-        <result column="instrument_id" property="instrumentId" />
         <result column="creation_time" property="creationTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        r_id, r_version, r_dataType, r_mId, r_law_imei, r_upTime, r_finish, r_data_len, r_content, r_binary, instrument_id, creation_time
+        r_id, r_version, r_dataType, r_mId, r_law_imei, r_upTime, r_finish, r_data_len, r_content, r_binary, creation_time
     </sql>
 
 </mapper>

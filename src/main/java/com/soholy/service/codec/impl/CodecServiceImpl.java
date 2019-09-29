@@ -190,7 +190,10 @@ public class CodecServiceImpl implements CodecService {
             binaryIndex += 4;
 
             //设备ID
-            byte[] src = ByteUtils.hex2byteWithBlank(request.getDeviceId().length() == 15 ? request.getDeviceId() + "0" : request.getDeviceId());
+            if(request.getDeviceId().length()%2 != 0){
+                request.setDeviceId(request.getDeviceId()+"0");
+            }
+            byte[] src = ByteUtils.hex2byteWithBlank(request.getDeviceId());
             ByteUtils.copyArrays(src, 0, src.length, binary, binaryIndex);
             binaryIndex += src.length;
 

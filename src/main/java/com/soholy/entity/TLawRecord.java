@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author GuanY
- * @since 2019-09-19
+ * @since 2019-09-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,7 +25,7 @@ public class TLawRecord extends Model<TLawRecord> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "r_id", type = IdType.ID_WORKER_STR)
+    @TableId(value = "r_id", type = IdType.UUID)
     private String rId;
 
     /**
@@ -75,11 +75,6 @@ public class TLawRecord extends Model<TLawRecord> {
      * 元数据
      */
     private byte[] rBinary;
-
-    /**
-     * 执法仪
-     */
-    private String instrumentId;
 
     private LocalDateTime creationTime;
 

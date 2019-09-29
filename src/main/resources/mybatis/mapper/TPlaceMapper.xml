@@ -5,11 +5,13 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.soholy.entity.TPlace">
         <id column="place_Id" property="placeId" />
+        <result column="place_code" property="placeCode" />
         <result column="place_name" property="placeName" />
         <result column="place_districtid" property="placeDistrictid" />
         <result column="place_type" property="placeType" />
         <result column="place_management" property="placeManagement" />
         <result column="place_phone" property="placePhone" />
+        <result column="place_street" property="placeStreet" />
         <result column="place_address" property="placeAddress" />
         <result column="place_status" property="placeStatus" />
         <result column="create_time" property="createTime" />
@@ -18,7 +20,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        place_Id, place_name, place_districtid, place_type, place_management, place_phone, place_address, place_status, create_time, update_time
+        place_Id, place_code, place_name, place_districtid, place_type, place_management, place_phone, place_street, place_address, place_status, create_time, update_time
     </sql>
 
 </mapper>

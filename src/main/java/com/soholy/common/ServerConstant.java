@@ -1,0 +1,33 @@
+package com.soholy.common;
+
+public class ServerConstant {
+
+    /**
+     * 包必须大于20b
+     */
+    public static final int BASE_LENGTH = 30;
+
+    /**
+     * 最大一个包10M
+     */
+    public static final int MAX_LEN = 1024 * 1024 * 10;
+
+    /**
+     * 包开头
+     */
+    public static final byte[] PACKET_MARK = {(byte) 0xA0, (byte) 0xA2};
+
+
+    /**
+     * 包：长度位置 起始
+     */
+    public static final int PACKET_LEN_START_INDEX = 26;
+    /**
+     * 包：长度位置 结束
+     */
+    public static final int PACKET_LEN_END_INDEX = PACKET_LEN_START_INDEX + 4;
+
+    public static final String SPLIT_IMEI_TOKEN = ",";
+
+    public static final String SAVE_IMG_SUFFIX = "png";
+}

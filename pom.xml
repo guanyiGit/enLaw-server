@@ -91,6 +91,13 @@
             <!--<version>5.14.5</version>-->
         </dependency>
 
+        <!--fastdfs依赖-->
+        <dependency>
+            <groupId>fastdfs_client.boot</groupId>
+            <artifactId>fastdfs_client</artifactId>
+            <version>1.25</version>
+        </dependency>
+
         <!--mysql-->
         <dependency>
             <groupId>mysql</groupId>

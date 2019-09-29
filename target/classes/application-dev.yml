@@ -3,12 +3,13 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.0.69:3308/dogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://192.168.0.69:3308/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
 
 logging:
   level:
     root: INFO
     com.soholy.cb: DEBUG
     io.netty:  DEBUG
+    org.apache.http:  DEBUG
     io.swagger.models.parameters.AbstractSerializableParameter: error
 

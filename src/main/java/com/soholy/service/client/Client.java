@@ -16,9 +16,9 @@ import java.util.concurrent.CountDownLatch;
 public class Client {//编写客户端单例模式方便系统调用
 
 
-    private static final String host = "129.211.79.98";
 //    private static final String host = "127.0.0.1";
 //    private static final int port = 9999;
+    private static final String host = "129.211.79.98";
     private static final int port = 6383;
 
 
@@ -142,7 +142,9 @@ public class Client {//编写客户端单例模式方便系统调用
 
     public void close() {
         try {
+            if(this.future!= null)
             this.future.channel().closeFuture().sync();
+            if(this.workerGroup!= null)
             this.workerGroup.shutdownGracefully();
         } catch (InterruptedException e) {
             e.printStackTrace();

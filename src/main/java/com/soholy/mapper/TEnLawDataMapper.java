@@ -3,6 +3,7 @@ package com.soholy.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.soholy.common.ReqPage;
 import com.soholy.entity.TEnLawData;
+import com.soholy.model.RecordDetail;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface TEnLawDataMapper extends BaseMapper<TEnLawData> {
                            @Param("deviceId") String deviceId,
                            @Param("dataTypeEm") String dataTypeEm,
                            @Param("type") Integer type);
+
+    RecordDetail findRecordDetailByDeivceIdAndInsId(@Param("deviceId") Long deviceId,@Param("instrumentId") String instrumentId);
 }

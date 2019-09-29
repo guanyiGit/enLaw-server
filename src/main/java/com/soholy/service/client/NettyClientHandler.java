@@ -1,10 +1,11 @@
 package com.soholy.service.client;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
-
+@ChannelHandler.Sharable
 public class NettyClientHandler extends ChannelHandlerAdapter {
 
     //客户端连接服务器完成事件

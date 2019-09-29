@@ -5,7 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.soholy.entity.TInstrumentRecord">
         <id column="record_id" property="recordId" />
-        <result column="record_placeid" property="recordPlaceid" />
+        <result column="record_entranceid" property="recordEntranceid" />
         <result column="record_instrumentid" property="recordInstrumentid" />
         <result column="record_deviceId" property="recordDeviceid" />
         <result column="create_time" property="createTime" />
@@ -13,7 +13,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        record_id, record_placeid, record_instrumentid, record_deviceId, create_time
+        record_id, record_entranceid, record_instrumentid, record_deviceId, create_time
     </sql>
 
 </mapper>

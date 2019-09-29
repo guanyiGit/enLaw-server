@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholy.mapper.TLawRecordDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.soholy.entity.TLawRecordDetail">
+        <id column="rd_id" property="rdId" />
+        <result column="r_id" property="rId" />
+        <result column="rd_desc" property="rdDesc" />
+        <result column="instrument_id" property="instrumentId" />
+        <result column="device_id" property="deviceId" />
+        <result column="creation_time" property="creationTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        rd_id, r_id, rd_desc, instrument_id, device_id, creation_time
+    </sql>
+
+</mapper>

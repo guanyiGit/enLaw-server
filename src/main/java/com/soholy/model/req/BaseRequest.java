@@ -1,6 +1,6 @@
 package com.soholy.model.req;
 
-import com.soholy.service.server.ServerConstant;
+import com.soholy.common.ServerConstant;
 import com.soholy.utils.ByteUtils;
 
 /**
@@ -55,6 +55,7 @@ public class BaseRequest {
      * 上传时间	U8	8byte
      * 数据产生的时间：
      * 到秒，从左往右每 2 个十进制数字截取保存、末尾数字补 0
+     * 2019080812121200
      */
     private String upTime;
 

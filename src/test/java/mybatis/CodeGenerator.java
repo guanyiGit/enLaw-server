@@ -16,7 +16,7 @@ public class CodeGenerator {
 
     private static String path = System.getProperty("user.dir");
 
-    private static String url = "jdbc:mysql://192.168.0.69:3308/dogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false";
+    private static String url = "jdbc:mysql://192.168.0.69:3308/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false";
     private static String driver = "com.mysql.jdbc.Driver";
     private static String username = "root";
     private static String password = "123456";
@@ -29,6 +29,7 @@ public class CodeGenerator {
             "t_instrument_record",
             "t_device",
             "t_law_record",
+            "t_law_record_detail",
     };
 
 
