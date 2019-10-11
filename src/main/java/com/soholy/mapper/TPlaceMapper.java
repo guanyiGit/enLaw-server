@@ -1,11 +1,12 @@
 package com.soholy.mapper;
 
-import com.soholy.entity.TPlace;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.soholy.entity.TPlace;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author GuanY
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface TPlaceMapper extends BaseMapper<TPlace> {
 
+    TPlace findAdminInfoByInstrumentId(@Param("instrumentId") String instrumentId);
 }

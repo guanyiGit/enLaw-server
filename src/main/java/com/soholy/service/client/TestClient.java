@@ -36,7 +36,7 @@ public class TestClient {
 
     @Test
     public void sendEpc() {
-        byte[] input = "6666555".getBytes(Charsets.UTF_8);
+        byte[] input = "2017".getBytes(Charsets.UTF_8);
         List<BaseRequest> testDatas = getTestDatas(mId, input, ReqDataType.EPC, true);
         testDatas.forEach(x -> {
             client.sendMessage(x);

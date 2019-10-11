@@ -87,8 +87,12 @@ public class EnLawServerImpl implements EnLawService {
     @Value("${send.sms.url}")
     private String smsUrl;
 
-    @Value("${ecp.cache.timeOut}")
-    private int ecpCacheTimeOut;
+    @Value("${ecp.cache.sms.timeOut}")
+    private int ecpCacheSmsTimeOut;
+
+    @Value("${ecp.cache.device.timeOut}")
+    private int ecpCacheDeviceTimeOut;
+
 
     @Autowired
     private TEnLawDataMapper enLawDataMapper;
@@ -104,6 +108,9 @@ public class EnLawServerImpl implements EnLawService {
 
     @Autowired
     private TLawRecordMapper tLawRecordMapper;
+
+    @Autowired
+    private TPlaceMapper tPlaceMapper;
 
     /**
      * 测试用
@@ -184,10 +191,23 @@ public class EnLawServerImpl implements EnLawService {
                     TLawEnforcementInstrument oldEntity = x.getValue();
                     Integer record = Arrays.stream(imeis)
                             .map(y -> {
+                                while (y.length() > 0 && y.indexOf("0") == 0) {
+                                    y = y.substring(1);
+                                }
+                                return y.trim();
+                            })
+                            .map(y -> {
                                 List<TDevice> tDevices = tDeviceMapper.selectList(Wrappers.<TDevice>lambdaQuery().eq(TDevice::getImei, y));
                                 if (tDevices != null && tDevices.size() > 0) return tDevices.get(0);
                                 return null;
                             }).filter(Objects::nonNull)
+                            .filter(y -> {
+                                //设备重传的抑制
+                                LocalDateTime minusTime = LocalDateTime.now().minusSeconds(ecpCacheDeviceTimeOut / 1000);
+                                return 0 == tLawRecordDetailMapper.selectCount(Wrappers.<TLawRecordDetail>lambdaQuery()
+                                        .eq(TLawRecordDetail::getDeviceId, y.getDeviceId())
+                                        .ge(TLawRecordDetail::getCreationTime, minusTime));
+                            })
                             .map(y -> {
                                 Long deviceId = y.getDeviceId();
                                 TLawRecordDetail detail = new TLawRecordDetail();
@@ -237,6 +257,7 @@ public class EnLawServerImpl implements EnLawService {
                 return;
             }
 
+            //发送短信犬主
             Map<String, String> params = new HashMap<>();
             params.put("type", "17");
             params.put("phone", recordDetail.getOwnerPhone());
@@ -248,14 +269,35 @@ public class EnLawServerImpl implements EnLawService {
             template_param.put("cLocation", recordDetail.getPlaceName());
 
             params.put("template_param", JSONObject.toJSONString(template_param));
-
             HttpResult httpResult = HttpClientUtil.executeHttpParams(smsUrl, "POST", null, params);
             log.info(ReflectionToStringBuilder.toString(httpResult, ToStringStyle.MULTI_LINE_STYLE));
-
             try {
                 if (200 == JSON.parseObject(httpResult.getContent()).getInteger("status")) {
-                    log.info("发送通知成功！");
-                    CacheUtils.setCache(key, detail,ecpCacheTimeOut);
+                    log.info("发送通知给犬主成功！" + recordDetail.getOwnerPhone());
+                    CacheUtils.setCache(key, detail, ecpCacheSmsTimeOut);
+                }
+            } catch (Exception e) {
+                log.info(e.getMessage());
+            }
+
+            //发送短信管理员
+            params.clear();
+            TPlace place = tPlaceMapper.findAdminInfoByInstrumentId(detail.getInstrumentId());
+            params.put("type", "18");
+            params.put("phone", place.getPlacePhone());
+
+            template_param.clear();
+            template_param.put("uname", place.getPlaceManagement());
+            template_param.put("area", place.getPlaceName());
+            template_param.put("owner", recordDetail.getDogOwnerName());
+            template_param.put("phone", recordDetail.getOwnerPhone());
+
+            params.put("template_param", JSONObject.toJSONString(template_param));
+            httpResult = HttpClientUtil.executeHttpParams(smsUrl, "POST", null, params);
+            log.info(ReflectionToStringBuilder.toString(httpResult, ToStringStyle.MULTI_LINE_STYLE));
+            try {
+                if (200 == JSON.parseObject(httpResult.getContent()).getInteger("status")) {
+                    log.info("发送通知给管理员成功！" + place.getPlacePhone());
                 }
             } catch (Exception e) {
                 log.info(e.getMessage());

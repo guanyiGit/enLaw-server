@@ -1,11 +1,33 @@
 package com.soholy.service.client;
 
+import com.alibaba.fastjson.JSONObject;
 import com.soholy.utils.ByteUtils;
+import com.soholy.utils.HttpClientUtil;
+import com.soholy.utils.HttpResult;
 import org.apache.commons.codec.Charsets;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
 public class NettyClientHandlerTest {
 
+
+    @Test
+    public void test12() throws IOException, URISyntaxException {
+        //发送短信犬主
+        Map<String, String> params = new HashMap<>();
+        params.put("type", "17");
+        Map<String, String> template_param = new HashMap<>();
+
+        template_param.put("cLocation", "cLocation");
+
+        params.put("template_param", JSONObject.toJSONString(template_param));
+        HttpResult httpResult = HttpClientUtil.executeHttpParams("http://localhost:8082", "POST", null, params);
+    }
 
     @Test
     public void test1() {

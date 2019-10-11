@@ -74,7 +74,7 @@ public class HttpClientUtil {
      *            请求的远程地址
      * @param charset
      *            请求编码，默认UTF8
-     * @param closeHttpClient
+     * @param isCloseHttpClien
      *            执行请求结束后是否关闭HttpClient客户端实例
      * @param headers
      *            (可设置[referer:连接地址]和[Cookie：cookie信息]) 请求头信息
@@ -106,7 +106,7 @@ public class HttpClientUtil {
      *            请求的远程地址
      * @param charset
      *            请求编码，默认UTF8
-     * @param closeHttpClient
+     * @param isCloseHttpClien
      *            执行请求结束后是否关闭HttpClient客户端实例
      * @param headers
      *            (可设置[referer:连接地址]和[Cookie：cookie信息]) 请求头信息
@@ -138,7 +138,7 @@ public class HttpClientUtil {
      *            请求的远程地址
      * @param charset
      *            请求编码，默认UTF8
-     * @param closeHttpClient
+     * @param isCloseHttpClien
      *            执行请求结束后是否关闭HttpClient客户端实例
      * @return HttpResult(状态码，结果)
      * @throws URISyntaxException
@@ -165,7 +165,7 @@ public class HttpClientUtil {
      *            请求的远程地址
      * @param charset
      *            请求编码，默认UTF8
-     * @param closeHttpClient
+     * @param isCloseHttpClien
      *            执行请求结束后是否关闭HttpClient客户端实例
      * @return HttpResult(状态码，结果)
      * @throws ParseException
@@ -394,21 +394,21 @@ public class HttpClientUtil {
             String trustcapath = "/cert/ca.jks";
 
             // 导入客户端证书到证书库
-            KeyStore selfCert = KeyStore.getInstance("pkcs12");
-            selfCert.load(HttpClientUtil.class.getResourceAsStream(selfcertpath), "IoM@1234".toCharArray());
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance("sunx509");
-            kmf.init(selfCert, "IoM@1234".toCharArray());
+//            KeyStore selfCert = KeyStore.getInstance("pkcs12");
+//            selfCert.load(HttpClientUtil.class.getResourceAsStream(selfcertpath), "IoM@1234".toCharArray());
+//            KeyManagerFactory kmf = KeyManagerFactory.getInstance("sunx509");
+//            kmf.init(selfCert, "IoM@1234".toCharArray());
 
             // 导入服务器的CA证书，添加信任
-            KeyStore caCert = KeyStore.getInstance("jks");
-            caCert.load(HttpClientUtil.class.getResourceAsStream(trustcapath), "Huawei@123".toCharArray());
-            TrustManagerFactory tmf = TrustManagerFactory.getInstance("sunx509");
-            tmf.init(caCert);
+//            KeyStore caCert = KeyStore.getInstance("jks");
+//            caCert.load(HttpClientUtil.class.getResourceAsStream(trustcapath), "Huawei@123".toCharArray());
+//            TrustManagerFactory tmf = TrustManagerFactory.getInstance("sunx509");
+//            tmf.init(caCert);
 
             SSLContext ssl = SSLContext.getInstance("TLS");
             // 自己的证书，服务器证书，加密随机数
-            ssl.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
-            // ssl.init(null, new TrustManager[] {manager }, null);
+//            ssl.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+             ssl.init(null, new TrustManager[] {manager }, null);
 
             socketFactory = new SSLConnectionSocketFactory(ssl, NoopHostnameVerifier.INSTANCE);// 设置域名不检验
         } catch (Exception e) {

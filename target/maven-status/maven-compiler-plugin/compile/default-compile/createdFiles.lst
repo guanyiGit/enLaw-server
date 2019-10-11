@@ -16,6 +16,7 @@ com\soholy\entity\TDevice.class
 com\soholy\entity\TPlace.class
 com\soholy\service\codec\impl\CodecServiceImpl$1.class
 com\soholy\service\codec\CodecService.class
+com\soholy\utils\R.class
 com\soholy\mapper\TLawEnforcementInstrumentMapper.class
 com\soholy\model\req\OtherRequest.class
 com\soholy\config\ConvertConfig.class
@@ -32,6 +33,7 @@ com\soholy\service\server\NettyServerHandler.class
 com\soholy\common\ServerConstant.class
 com\soholy\mapper\TEnLawDataMapper.class
 com\soholy\common\ReqPage.class
+com\soholy\controller\httpServer\LawController.class
 com\soholy\service\client\Client$ClientInitializer.class
 com\soholy\service\client\Client$1.class
 com\soholy\config\CorsConfig.class

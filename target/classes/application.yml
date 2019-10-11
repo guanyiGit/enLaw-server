@@ -6,7 +6,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: prod
   aop:
     proxy-target-class: true
 
@@ -66,3 +66,11 @@ mybatis-plus:
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
+
+logging:
+  level:
+    root: INFO
+    com.soholy.cb: DEBUG
+    io.netty:  DEBUG
+    org.apache.http:  DEBUG
+    io.swagger.models.parameters.AbstractSerializableParameter: error

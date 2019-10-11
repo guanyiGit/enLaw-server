@@ -23,4 +23,17 @@
         place_Id, place_code, place_name, place_districtid, place_type, place_management, place_phone, place_street, place_address, place_status, create_time, update_time
     </sql>
 
+    <select id="findAdminInfoByInstrumentId" resultType="com.soholy.entity.TPlace">
+        SELECT
+            <!--le.instrument_id, ir.record_id,en.entrance_id,pl.place_Id,-->
+            pl.create_time,pl.place_address,pl.place_code,pl.place_districtid,pl.place_Id,pl.place_management,
+            pl.place_name,pl.place_phone,pl.place_status,pl.place_street,pl.place_type,pl.update_time
+        FROM t_law_enforcement_instrument le
+        INNER JOIN t_instrument_record ir ON ir.record_instrumentid = le.instrument_id
+        INNER JOIN t_entrance en on en.entrance_id = ir.record_entranceid
+        INNER JOIN t_place pl ON pl.place_Id = en.entrance_placeId
+        WHERE le.instrument_id = #{instrumentId}
+        GROUP BY pl.place_Id
+    </select>
+
 </mapper>

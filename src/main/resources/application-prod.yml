@@ -1,9 +1,6 @@
 spring:
   datasource:
     username: root
-    password: shl@CXZ1104
-    url: jdbc:mysql://120.78.137.116:3306/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
+    password: 123456
+    url: jdbc:mysql://129.211.79.98:3308/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
 
-logging:
-  level: INFO
-  com.soholy.cb: INFO

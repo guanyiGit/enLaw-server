@@ -43,9 +43,11 @@ F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\en
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\entity\TPlace.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\mapper\TDeviceMapper.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\config\ConvertConfig.java
+F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\utils\R.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\controller\EnLawControoler.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\service\client\ClientMessageEncode.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\entity\TDevice.java
+F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\controller\httpServer\LawController.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\entity\TLawEnforcementInstrument.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\utils\fdfs\FastDFSClient.java
 F:\development\workspace\IDEA_wordspace\enLaw-server\src\main\java\com\soholy\service\server\EnLawServer.java
