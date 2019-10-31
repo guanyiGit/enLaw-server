@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cf16e700-249c-4d2f-8d49-a19f4ee8a840" name="Default Changelist" comment="" />
+    <list default="true" id="cf16e700-249c-4d2f-8d49-a19f4ee8a840" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,10 +19,77 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/controller/EnLawControoler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="138">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/EnLawServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="920">
+              <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/ServerMessageDecode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2116">
+              <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+              <folding>
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/common/ServerConstant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/config/conf.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="253">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -27,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/NettyServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+            <state relative-caret-position="828">
+              <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,34 +107,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/impl/EnLawServerImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="260" column="57" lean-forward="true" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/utils/HttpClientUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="410" column="52" selection-start-line="410" selection-start-column="52" selection-end-line="410" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../../JDK/jdk1.8.0_162/jre/lib/rt.jar!/javax/net/ssl/SSLContext.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="71" column="22" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+            <state relative-caret-position="92">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -83,9 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>数据处理成功</find>
-      <find>https</find>
-      <find>https://qlw</find>
       <find>https://q</find>
       <find>recordSave</find>
       <find>send</find>
@@ -113,6 +156,9 @@
       <find>executeGetResponse</find>
       <find>送通知给管理员成功</find>
       <find>enableSSL</find>
+      <find>findRecordDetailByDeivceIdAndInsId</find>
+      <find>findAdminInfoByInstrumentId</find>
+      <find>The data received are</find>
     </findStrings>
     <replaceStrings>
       <replace>binary</replace>
@@ -156,7 +202,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/mapper/TEnLawDataMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/model/RecordDetail.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis/mapper/TEnLawDataMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/service/client/NettyClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/controller/httpServer/ApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/model/req/BaseRequest.java" />
@@ -167,12 +212,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/mapper/TPlaceMapper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/soholy/service/client/NettyClientHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/service/client/TestClient.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/config/conf.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-prod.yml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/utils/HttpClientUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soholy/service/impl/EnLawServerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/config/conf.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-prod.yml" />
       </list>
     </option>
   </component>
@@ -213,10 +259,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="920" />
-    <option name="y" value="126" />
-    <option name="width" value="1234" />
-    <option name="height" value="942" />
+    <option name="x" value="953" />
+    <option name="y" value="37" />
+    <option name="width" value="974" />
+    <option name="height" value="1003" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -266,7 +312,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="soholy" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="enLaw-server" type="b2602c69:ProjectViewProjectNode" />
@@ -398,7 +444,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/soholy/service" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/soholy/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xiningliantongqlw" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -540,8 +586,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestClient.sendEpc" />
-        <item itemvalue="JUnit.TestClient.testUpLoadFile" />
         <item itemvalue="Spring Boot.EnLawServerApplication" />
+        <item itemvalue="JUnit.TestClient.testUpLoadFile" />
         <item itemvalue="JUnit.NettyClientHandlerTest.test12" />
         <item itemvalue="JUnit.TestClient.currentTest" />
       </list>
@@ -603,50 +649,64 @@
       <workItem from="1570522621776" duration="3243000" />
       <workItem from="1570581532471" duration="12882000" />
       <workItem from="1570668212894" duration="2317000" />
-      <workItem from="1570756508440" duration="8659000" />
+      <workItem from="1570756508440" duration="12311000" />
+      <workItem from="1570787239296" duration="2161000" />
+      <workItem from="1570867981276" duration="3271000" />
+      <workItem from="1571016453254" duration="1981000" />
+      <workItem from="1571126595422" duration="734000" />
+      <workItem from="1571195993544" duration="592000" />
+      <workItem from="1571221151428" duration="650000" />
+      <workItem from="1571728911086" duration="2478000" />
+      <workItem from="1571791199841" duration="3878000" />
+      <workItem from="1571877925942" duration="4023000" />
+      <workItem from="1571971645781" duration="1211000" />
+      <workItem from="1572054430391" duration="588000" />
+      <workItem from="1572223400351" duration="1417000" />
+      <workItem from="1572241471565" duration="1266000" />
+      <workItem from="1572482180527" duration="951000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.09 at 17h 33m 21s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.10 at 08h 53m 35s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.10 at 09h 06m 39s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.10 at 09h 06m 54s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.10 at 09h 12m 35s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_testUpLoadFile - 2019.10.10 at 09h 15m 25s.xml">
-      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestClient_sendEpc - 2019.10.11 at 15h 43m 30s.xml">
+    <history-entry file="TestClient_sendEpc - 2019.10.11 at 17h 26m 20s.xml">
       <configuration name="TestClient.sendEpc" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClient_sendEpc - 2019.10.11 at 15h 45m 47s.xml">
+    <history-entry file="TestClient_sendEpc - 2019.10.11 at 17h 26m 37s.xml">
       <configuration name="TestClient.sendEpc" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClient_sendEpc - 2019.10.11 at 15h 48m 25s.xml">
+    <history-entry file="TestClient_sendEpc - 2019.10.11 at 17h 30m 32s.xml">
       <configuration name="TestClient.sendEpc" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestClient_sendEpc - 2019.10.11 at 16h 09m 22s.xml">
+    <history-entry file="TestClient_sendEpc - 2019.10.11 at 17h 49m 15s.xml">
+      <configuration name="TestClient.sendEpc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_sendEpc - 2019.10.11 at 18h 03m 25s.xml">
+      <configuration name="TestClient.sendEpc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_sendEpc - 2019.10.14 at 09h 28m 48s.xml">
+      <configuration name="TestClient.sendEpc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_sendEpc - 2019.10.22 at 16h 01m 40s.xml">
+      <configuration name="TestClient.sendEpc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_sendEpc - 2019.10.22 at 16h 02m 21s.xml">
+      <configuration name="TestClient.sendEpc" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_testUpLoadFile - 2019.10.22 at 16h 02m 39s.xml">
+      <configuration name="TestClient.testUpLoadFile" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestClient_sendEpc - 2019.10.24 at 11h 37m 05s.xml">
       <configuration name="TestClient.sendEpc" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275395000" />
+    <option name="totallyTimeSpent" value="304248000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="953" y="37" width="974" height="1003" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6371951" visible="true" weight="0.054371003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6371951" visible="true" weight="0.34354487" />
       <window_info id="Structure" order="1" sideWeight="0.3628049" side_tool="true" weight="0.19509594" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -656,8 +716,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.28031147" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38980892" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.24916574" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4915254" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.7849589" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -672,7 +732,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info active="true" anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.3192964" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.09434968" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.19822222" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="SciView" order="6" />
@@ -742,21 +802,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/codes/com/soholy/xml/TEnLawDataMapper.xml" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/entity/TEnLawData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/entity/TLawEnforcementInstrument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/entity/TLawRecord.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -796,13 +841,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/common/ServerConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/fastdfs_client/boot/fastdfs_client/1.25/fastdfs_client-1.25.jar!/org/csource/fastdfs/StorageClient1.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -827,31 +865,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/mapper/TEnLawDataMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/model/RecordDetail.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="15" column="29" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TEnLawDataMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
@@ -890,16 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="42" column="18" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/controller/httpServer/LawController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -942,24 +949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/EnLawServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/ServerMessageDecode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2254">
-          <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
-          <folding>
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,23 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TPlaceMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="25" column="83" selection-start-line="25" selection-start-column="83" selection-end-line="25" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/client/TestClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="329">
@@ -1040,34 +1012,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" selection-start-line="4" selection-start-column="40" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="28" lean-forward="true" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/controller/EnLawControoler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="26" selection-start-line="25" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/client/NettyClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1075,47 +1019,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/NettyServerHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/utils/HttpClientUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+        <state relative-caret-position="782">
+          <caret line="75" column="29" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/conf.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../../../JDK/jdk1.8.0_162/jre/lib/rt.jar!/javax/net/ssl/SSLContext.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
+        <state relative-caret-position="1334">
           <caret line="71" column="22" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/mapper/TEnLawDataMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/impl/EnLawServerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="260" column="57" lean-forward="true" selection-start-line="260" selection-start-column="57" selection-end-line="260" selection-end-column="57" />
+        <state relative-caret-position="5819">
+          <caret line="284" column="67" selection-start-line="284" selection-start-column="40" selection-end-line="284" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/utils/HttpClientUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TPlaceMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="410" column="52" selection-start-line="410" selection-start-column="52" selection-end-line="410" selection-end-column="52" />
+        <state relative-caret-position="437">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis/mapper/TEnLawDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1196">
+          <caret line="52" column="46" selection-start-line="39" selection-start-column="7" selection-end-line="52" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/controller/httpServer/LawController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/EnLawServerApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/common/ApplicationContextProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/entity/TEnLawData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/controller/EnLawControoler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/EnLawServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="54" column="89" selection-start-line="54" selection-start-column="89" selection-end-line="54" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/ServerMessageDecode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2116">
+          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+          <folding>
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/common/ServerConstant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soholy/service/server/NettyServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="48" column="40" selection-start-line="48" selection-start-column="40" selection-end-line="48" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="80" column="21" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/conf.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

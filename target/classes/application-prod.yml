@@ -1,6 +1,6 @@
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://129.211.79.98:3308/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: nm_0820
+    password: Shl@0820
+    url: jdbc:mysql://47.106.241.165:3306/xiningdogs_or_netword?useUnicode=true&characterEncoding=utf8&useSSL=false
 
